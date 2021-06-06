@@ -33,7 +33,7 @@ user_id kısmına bağlamalı ve role_id yide roles tablosundan role_id ye bağl
 // TODO: demo.md'de sitenin detayları.
 // TODO: Kısalt, madde madde göster.
 1. Bu işlemlerden sonra roles tablosunda name kısmına "ADMIN" yazıp kaydedin.
-2. users tablosunda username kısmına admin yazın, parola kısmına ise test kısmındaki"PasswordGenerator" sınıfından "parolanızı giriniz" yazan yere yazıp çıkan sonucu mysqldeki users tablosundaki password kısmına yapıştırınız.
+2. users tablosunda username kısmına admin yazın, parola kısmına ise test kısmındaki "PasswordGenerator" sınıfından "parolanızı giriniz" yazan yere yazıp çıkan sonucu mysqldeki users tablosundaki password kısmına yapıştırınız.
 3. Sonra users_roles tablosuna gidip user_id ve role_id yerine 1 yazın
 4. Böylece sisteme bir adet yönetici atamış olduk
 5. Daha sonra kullanıcı eklenecek ise localhost:8080/registration kısmından ekleyebilirsiniz.

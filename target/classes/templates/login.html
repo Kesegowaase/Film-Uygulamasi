@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container" style="padding:155px" >
+		<div class="row justify-content-center align-items-center">
+			<div class="col-sm-4" > 
+				<h1 class="text-center">Giriş Yap</h1>
+				<form th:action="@{/login}" method="post">
+
+					<!-- error message -->
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">Geçersiz kullanıcı adı veya parola.</div>
+					</div>
+
+					<!-- logout message -->
+					<div th:if="${param.logout}">
+						<div class="alert alert-info">Çıkış yaptınız.</div>
+					</div>
+
+					<div class="form-group">
+						<label for="username">Kullanıcı adı</label>
+						<input type="text"
+							class="form-control" id="username" name="username"
+							placeholder="Kullanıcı adınızı girin" autofocus="autofocus">
+					</div>
+					&nbsp;
+					<div class="form-group">
+						<label for="password">Parola</label>
+						<input type="password"
+							id="password" name="password" class="form-control"
+							placeholder="Parolanızı girin" />
+					</div>
+					&nbsp;
+					<div class="form-group">
+						<div class="row justify-content-center">
+							<div class="col-sm-4 col-sm-offset-3">
+								<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-primary" value="Giriş Yap" />
+							</div>
+						</div>
+					</div>
+					&nbsp;
+				</form>
+				<div class="form-group text-center">
+					<span>Hesabınız yok mu? <a href="/" th:href="@{/registration}">Burdan kaydolun.</a></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

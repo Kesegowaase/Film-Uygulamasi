@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Film Koleksiyonu</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container" sec:authorize="isAuthenticated()">
+		<div class="row">
+			<div class="col col-md-5">
+				Hoş geldin <b><span sec:authentication="name">Kullanıcı
+						Adı</span></b> &nbsp; <i><span sec:authentication="principal.authorities">Roller</span></i>
+			</div>
+			<div class="col col-md-5"></div>
+			<div class="col col-md-2 btn-group" role="group">
+				<a class="btn btn-success" th:href="@{/newMovieForm}">Film Ekle</a>
+				<form th:action="@{/logout}" method="post">
+					&nbsp <input type="submit" class="btn btn-danger" value="Çıkış yap" />
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container">
+		<h1 align="center">Film Koleksiyonu</h1>
+		<br /> <br />
+		<div>
+			<form th:action="@{/page/1}">
+				<input type="hidden" name="sortField" th:value="${sortField}">
+				<input type="hidden" name="sortDir" th:value="${sortDir}">
+				Arama : <input type="text" name="keyword" th:value="${keyword}"
+					required> &nbsp; <input class="btn btn-primary"
+					type="submit" value="Ara"> &nbsp; <a
+					class="btn btn-primary" th:href="@{/}">Temizle</a>
+			</form>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Film Adı</th>
+					<th><a
+						th:href="@{'/page/' + ${currentPage} + '?sortField=publicationYear&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+							Yayın Yılı</a></th>
+					<th>Tür</th>
+					<th>Açıklama</th>
+					<th>Medya</th>
+					<th>Oyuncular</th>
+					<th>Dil Seçenekleri</th>
+					<th sec:authorize="hasAnyAuthority('ADMIN')">Güncelle/Sil</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="movie : ${listMovies}">
+					<td th:text="${movie.name}"></td>
+					<td th:text="${movie.publicationYear}"></td>
+					<td th:text="${movie.type}"></td>
+					<td th:text="${movie.description}"></td>
+					<td th:text="${movie.media}"></td>
+					<td th:text="${movie.actorName}"></td>
+					<td th:text="${movie.language}"></td>
+					<td sec:authorize="hasAnyAuthority('ADMIN')"><a
+						th:href="@{/showFormForUpdate/{id}(id=${movie.id})}"
+						class="btn btn-primary">Güncelle</a> <a
+						th:href="@{/deleteMovie/{id}(id=${movie.id})}"
+						class="btn btn-danger">Sil</a>
+				</tr>
+			</tbody>
+		</table>
+		<div th:if="${totalPages > 1}">
+			<div class="row">
+				<div class="col-2">Toplam Film Sayısı : [[${totalItems}]]</div>
+				<div class="col-1">
+					<a th:if="${currentPage > 1}"
+						th:href="@{'/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">İlk
+						Sayfa</a> <span th:unless="${currentPage > 1}">İlk Sayfa</span>
+				</div>
+				<div class="col-2">
+					<a th:if="${currentPage > 1}"
+						th:href="@{'/page/' + ${currentPage -1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Önceki
+						Sayfa</a> <span th:unless="${currentPage > 1}">Önceki Sayfa</span>
+				</div>
+				<div class="col-1">
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}"> <a
+						th:if="${currentPage !=i}"
+						th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>&nbsp; &nbsp;
+					</span>
+				</div>
+				<div class="col-2">
+					<a th:if="${currentPage < totalPages}"
+						th:href="@{'/page/' + ${currentPage +1}  + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Sonraki
+						Sayfa</a> <span th:unless="${currentPage < totalPages}">Sonraki
+						Sayfa</span>
+				</div>
+				<div class="col-1">
+					<a th:if="${currentPage < totalPages}"
+						th:href="@{'/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Son
+						Sayfa</a> <span th:unless="${currentPage < totalPages}">Son
+						Sayfa</span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

@@ -2,11 +2,11 @@
 
 ## Kullanılan Teknolojiler
 - Spring Framework
-- Spring boot
-- Spring security
-- Spring boot DevTools
-- Spring data jpa with hibernate
-- MySQL JDBC driver
+- Spring Boot
+- Spring Security
+- Spring Boot DevTools
+- Spring Data JPA with Hibernate
+- MySQL JDBC Driver
 - Thymeleaf
 - Maven
 - Bootstrap
@@ -32,11 +32,11 @@ user_id kısmına bağlamalı ve role_id yide roles tablosundan role_id ye bağl
 // TODO: img klasörü aç, ss yükle.
 // TODO: demo.md'de sitenin detayları.
 // TODO: Kısalt, madde madde göster.
-Bu işlemlerden sonra roles tablosunda name kısmına "ADMIN" yazıp kaydedin. Aynı işlemi users tablosunda yapın ama parolanızı test kısmındaki
-"PasswordGenerator" sınıfından "parolanızı giriniz" yazan yere yazıp çıkan sonucu mysqldeki users tablosundaki password kısmına yapıştırınız.
-Sonra users_roles tablosuna gidip user_id ve role_id yerine 1 yazdıktan sonra sisteme bir adet kullanıcı adı ADMIN parolası ise belirlediğiniz
-bir yönetici atamış oluyoruz daha sonra kullanıcı eklenecek ise /registration kısmından ekleyebiliriz bu işlem sadece yönetici
-eklemek içindir.
+1. Bu işlemlerden sonra roles tablosunda name kısmına "ADMIN" yazıp kaydedin.
+2. users tablosunda username kısmına admin yazın, parola kısmına ise test kısmındaki"PasswordGenerator" sınıfından "parolanızı giriniz" yazan yere yazıp çıkan sonucu mysqldeki users tablosundaki password kısmına yapıştırınız.
+3. Sonra users_roles tablosuna gidip user_id ve role_id yerine 1 yazın
+4. Böylece sisteme bir adet yönetici atamış olduk
+5. Daha sonra kullanıcı eklenecek ise localhost:8080/registration kısmından ekleyebilirsiniz.
 
-kod ayarlarında mysql kullanıcı adı parola "root" ve port ise 3306 olarak kayıtlanmıştır. bu işlemlerden sonra kodu kullandığınız ide de
+Kod ayarları (application.properties) MySQL kullanıcı adı ve parolası "root" ve port ise 3306 olarak kayıtlanmıştır. Bu işlemlerden sonra kodu kullandığınız IDE'de
 en üst pakete sağ tıklayıp run as java application dedikten sonra tarayıcınızda arama yerine localhost:8080 yazmanız yeterlidir.

@@ -18,8 +18,8 @@
    3. users, 
    4. users_roles.
    
-![ERR Diagram](/src/err\ diagram.PNG)
----------------
+![ERR Diagram](/src/errdiagram.PNG)
+
 users tablosunda user_id(int,primary key, not null, auto increment), username(varchar(45), not null) password(varchar(64), not null)
 roles tablosunda role_id(int primary key, not null, auto increment), name(varchar(45), not null)
 movies tablosunda id(int,primary key, not null, auto increment), nameMovies(varchar(45), not null), publicationYearMovies(int, not null),
@@ -27,7 +27,7 @@ typeMovies(varchar(45), not null), descriptionMovies(TEXT, not null), mediaMovie
 actorName(varchar(100), not null)
 users_roles user_id(int), role_id(int) yapılıp bu her iki kolonada foreign key atanmalı user_id yi users tablosundan
 user_id kısmına bağlamalı ve role_id yide roles tablosundan role_id ye bağlamalıyız foreign key olarak.
-----------------
+
 
 // TODO: img klasörü aç, ss yükle.
 // TODO: demo.md'de sitenin detayları.

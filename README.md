@@ -18,7 +18,7 @@
    3. users, 
    4. users_roles.
    
-![ERR Diagram](/src/errdiagram.PNG)
+![ERR Diagram](/img/errdiagram.PNG)
 
 users tablosunda user_id(int,primary key, not null, auto increment), username(varchar(45), not null) password(varchar(64), not null)
 roles tablosunda role_id(int primary key, not null, auto increment), name(varchar(45), not null)

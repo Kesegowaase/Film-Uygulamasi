@@ -20,13 +20,26 @@
    
 ![ERR Diagram](/img/errDiagram.PNG)
 
-users tablosunda user_id(int,primary key, not null, auto increment), username(varchar(45), not null) password(varchar(64), not null)
-roles tablosunda role_id(int primary key, not null, auto increment), name(varchar(45), not null)
-movies tablosunda id(int,primary key, not null, auto increment), nameMovies(varchar(45), not null), publicationYearMovies(int, not null),
-typeMovies(varchar(45), not null), descriptionMovies(TEXT, not null), mediaMovies(varchar(45), not null), languageMovies(varchar(100), not null),
-actorName(TEXT, not null)
-users_roles user_id(int), role_id(int) yapılıp bu her iki kolonada foreign key atanmalı user_id yi users tablosundan
-user_id kısmına bağlamalı ve role_id yide roles tablosundan role_id ye bağlamalıyız foreign key olarak.
+- users tablosu
+   - user_id(int,primary key, not null, auto increment) 
+   - username(varchar(45), not null) 
+   - password(varchar(64), not null)
+- roles tablosu: 
+   - role_id(int primary key, not null, auto increment) 
+   - name(varchar(45), not null)
+- movies tablosu 
+   - id(int,primary key, not null, auto increment)
+   -  nameMovies(varchar(45), not null) 
+   -  publicationYearMovies(int, not null)
+   -  typeMovies(varchar(45), not null)
+   -  descriptionMovies(TEXT, not null)
+   -  mediaMovies(varchar(45), not null)
+   -  languageMovies(varchar(100), not null),
+   - actorName(TEXT, not null)
+- users_roles tablosu: 
+   - user_id(int)
+   - role_id(int) 
+yapılıp bu her iki kolonada foreign key atanmalı. user_id yi users tablosundan user_id kısmına bağlamalı ve role_id yide roles tablosundan role_id ye bağlamalıyız foreign key olarak.
 
 
 1. Bu işlemlerden sonra roles tablosunda name kısmına "ADMIN" yazıp kaydedin.
